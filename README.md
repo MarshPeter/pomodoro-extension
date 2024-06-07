@@ -10,7 +10,8 @@
 
 ## TODO LIST
 
-- [ ] Get Extension Functionality working with a simple hello world
+- [X] Get Extension Functionality working with a simple hello world
+- [ ] Create default styling
 - [ ] Get a persistent timer to work
 - [ ] Get audio to play from extension
 - [ ] Have audio play at the end of a timer

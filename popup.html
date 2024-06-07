@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Pomodoro Popup</title>
+</head>
+<body>
+    <div>
+        <h1>Productive Pomodoro</h1>
+        <main class="container container--col container--main">
+            <section class="timer__container">
+                <p class="timer__p">00:00:00</p>
+            </section>
+            <section class="pomodoro__setting-container container container--col">
+                <h2>Pomodoro Settings</h2>
+                <div class="container container__minute-setting">
+                    <label for="pom_duration--min" class="input__label">Minutes: </label>
+                    <input type="number" id="pom_duration--min" class="input">
+                </div>
+                <button type="button">Start Pomodoro</button>
+            </section>
+            <section>
+                <h2>URL Blacklist</h2>
+                <div>
+                    <div>
+                        <p>https://google.com</p>
+                        <button type="button">x</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="text" name="new-blacklist-url">
+                        <button type="button">Add</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -10,17 +10,17 @@
 
 ## TODO LIST
 
-[ ] Get Extension Functionality working with a simple hello world
-[ ] Get a persistent timer to work
-[ ] Get audio to play from extension
-[ ] Have audio play at the end of a timer
-[ ] Allow user to input custom timer
-[ ] Allow user to input website url to blacklist
-[ ] Enable blacklist
-[ ] Disable blacklist
-[ ] Have blacklist work for a list of urls
-[ ] Be able to remove items from blacklist
-[ ] Have blacklist start on pomodoro start
-[ ] Have blacklist end on pomodoro timer end
-[ ] Have blacklist end when user prematurely ends it
-[ ] Have blacklist persist through sessions
+- [ ] Get Extension Functionality working with a simple hello world
+- [ ] Get a persistent timer to work
+- [ ] Get audio to play from extension
+- [ ] Have audio play at the end of a timer
+- [ ] Allow user to input custom timer
+- [ ] Allow user to input website url to blacklist
+- [ ] Enable blacklist
+- [ ] Disable blacklist
+- [ ] Have blacklist work for a list of urls
+- [ ] Be able to remove items from blacklist
+- [ ] Have blacklist start on pomodoro start
+- [ ] Have blacklist end on pomodoro timer end
+- [ ] Have blacklist end when user prematurely ends it
+- [ ] Have blacklist persist through sessions

@@ -5,14 +5,14 @@
 - Contains a pomodoro timer, where the user can control the duration of the timer or default to 25 minutes.
 - At the end of the duration, the timer will stop and an sound will be made to notify the user.
 - The user can enter various websites into a 'productivity blacklist'.
-- While the pomodoro timer is active, the 'productivity blacklist' will disallow the user to access those websites. 
-- At the end of the duration OR when the user says that they are done with the pomodoro extension, the timer will end and the blacklisted websites will be accessibile again. 
+- While the pomodoro timer is active, the 'productivity blacklist' will disallow the user to access those websites.
+- At the end of the duration OR when the user says that they are done with the pomodoro extension, the timer will end and the blacklisted websites will be accessibile again.
 
 ## TODO LIST
 
 - [X] Get Extension Functionality working with a simple hello world
-- [ ] Create default styling
-- [ ] Get a persistent timer to work
+- [X] Create default styling
+- [X] Get a persistent timer to work
 - [ ] Get audio to play from extension
 - [ ] Have audio play at the end of a timer
 - [ ] Allow user to input custom timer

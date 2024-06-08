@@ -17,23 +17,29 @@
                 <h2>Pomodoro Settings</h2>
                 <div class="container container__minute-setting">
                     <label for="pom_duration--min" class="input__label">Minutes: </label>
-                    <input type="number" id="pom_duration--min" class="input">
+                    <input type="number" id="pom_duration--min" class="minutes-input">
                 </div>
-                <button type="button">Start Pomodoro</button>
+                <button type="button" class="btn pomo-start-btn">Start Pomodoro</button>
             </section>
-            <section>
+            <section class="url__section">
                 <h2>URL Blacklist</h2>
                 <div>
-                    <div>
-                        <p>https://google.com</p>
-                        <button type="button">x</button>
+                    <ul class="url-listing__container">
+                        <li class="url-listing">
+                            <p class="url-listing-p">https://google.com</p>
+                            <button type="button" class="delete-btn">x</button>
+                        </li>
+                        <li class="url-listing">
+                            <p class="url-listing-p">https://google.com</p>
+                            <button type="button" class="delete-btn">x</button>
+                        </li>
+                    </ul>
+                    <div class="">
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <input type="text" name="new-blacklist-url">
-                        <button type="button">Add</button>
-                    </div>
+                <div class="add-url__container">
+                    <input type="text" name="new-blacklist-url">
+                    <button type="button">Add</button>
                 </div>
             </section>
         </main>

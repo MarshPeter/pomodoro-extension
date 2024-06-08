@@ -7,8 +7,10 @@
 }
 
 body {
-    background-color: #efefef;
+    background-color: #111;
+    color: #eee;
     text-align: center;
+    padding: 0.5rem 0;
 }
 
 h1 {
@@ -22,6 +24,7 @@ h1 {
 
 .container--col {
     flex-direction: column;
+    align-items: center;
 }
 
 .container--main {
@@ -34,13 +37,73 @@ h1 {
 
 .timer__p {
     font-size: 3rem;
+    background-color: #eee;
+    color: #111;
 }
 
 .input__label {
     flex: 1 1 auto;
 }
 
-.input {
+.minutes-input {
     flex: 1 1 auto;
+    color: #111;
+    padding: 0.2rem;
+    background-color: #aaa;
 }
 
+.btn {
+    font-size: 1.1rem;
+    border-radius: 1rem;
+}
+
+.url__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pomo-start-btn {
+    width: 50%;
+    padding: 0.2rem;
+}
+
+.pomo-start-btn:hover {
+    background-color: #aae;
+}
+
+.url-listing__container {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 2px 0;
+}
+
+.url-listing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #111;
+    padding: 2px 0;
+}
+
+.url-listing-p {
+    width: fit-content;
+}
+
+.delete-btn {
+    width: fit-content;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.delete-btn:hover {
+    background-color: #eaa;
+}
+
+.add-url__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}

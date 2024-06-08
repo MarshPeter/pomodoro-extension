@@ -13,9 +13,10 @@
 - [X] Get Extension Functionality working with a simple hello world
 - [X] Create default styling
 - [X] Get a persistent timer to work
-- [ ] Get audio to play from extension
-- [ ] Have audio play at the end of a timer
-- [ ] Allow user to input custom timer
+- [X] Get audio to play from extension
+- [X] Have audio play at the end of a timer
+- [X] Have all this run from the background
+- [X] Allow user to input custom timer
 - [ ] Allow user to input website url to blacklist
 - [ ] Enable blacklist
 - [ ] Disable blacklist

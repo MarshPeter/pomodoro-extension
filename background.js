@@ -22,6 +22,45 @@ function handleTime(finishTime, pomodoroState) {
     }
 }
 
+function blockWebsites(pomodoroState) {
+
+    const rules = pomodoroState.blockList.map((site, index) => ({
+        id: index + 2,
+        condition: {urlFilter: `${site}`},
+        action: {type: "redirect", redirect: {url: "https://google.com"}}
+    }));
+
+    console.log(rules);
+
+    // remove any existing rules if present, and then add the new ones
+    chrome.declarativeNetRequest.updateDynamicRules({
+        removeRuleIds: rules.map(rule => rule.id),
+        addRules: rules
+    }, () => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+        } else {
+            console.log("Rules updated successfully");
+        }
+    })
+    console.log(chrome.declarativeNetRequest.getDynamicRules());
+}
+
+function unblockSites(pomodoroState) {
+    const ruleIds = pomodoroState.blockList.map((site, index) => index + 2);
+
+    chrome.declarativeNetRequest.updateDynamicRules({
+        removeRuleIds: ruleIds,
+    }, () => {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+        } else {
+            console.log("Rules updated successfully");
+        }
+    })
+}
+
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'retrieveState') {
         if (pomodoroState.timerActive && pomodoroState.currentValue <= 0) {
@@ -33,6 +72,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         sendResponse({action: 'intervalUpdate', value: pomodoroState.finishTime, blockList: pomodoroState.blockList});
     }
     if (message.action === 'startInterval') {
+        blockWebsites(pomodoroState);
         const timer = setInterval(() => {handleTime(new Date(message.finishTime), pomodoroState)})
         pomodoroState.currentTimer = timer;
         pomodoroState.finishTime = message.finishTime;
@@ -51,6 +91,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             pomodoroState.timerActive = false;
             pomodoroState.currentValue = 0;
             pomodoroState.finishTime = null;
+            unblockSites();
         }
     }
 })

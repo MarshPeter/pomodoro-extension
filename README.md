@@ -26,3 +26,7 @@
 - [ ] Have blacklist end on pomodoro timer end
 - [ ] Have blacklist end when user prematurely ends it
 - [X] Have blacklist persist through sessions
+
+## CURRENT REASON FOR PAUSE
+
+The google API is bad, and after spending 2 days trying to figure out first how to block websites with declarativeNetRequest, and then trying to redirect to google.com instead of the website, and with no answers in sight I am just going to go onto other stuff instead.

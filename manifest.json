@@ -3,12 +3,21 @@
     "name": "Hello Extensions",
     "description": "Base Level Extension",
     "version": "1.0",
+    "permissions": ["tts",
+        "declarativeNetRequest", 
+        "declarativeNetRequestFeedback",
+        "activeTab",
+        "contextMenus",
+        "storage"
+    ],
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["tts"],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "hello_extensions.png"
-    }
+    },
+    "host_permissions": [
+        "<all_urls>"
+    ]
 }

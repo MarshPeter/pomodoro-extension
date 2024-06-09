@@ -17,7 +17,7 @@
 - [X] Have audio play at the end of a timer
 - [X] Have all this run from the background
 - [X] Allow user to input custom timer
-- [ ] Allow user to input website url to blacklist
+- [X] Allow user to input website url to blacklist
 - [ ] Enable blacklist
 - [ ] Disable blacklist
 - [ ] Have blacklist work for a list of urls
@@ -25,4 +25,4 @@
 - [ ] Have blacklist start on pomodoro start
 - [ ] Have blacklist end on pomodoro timer end
 - [ ] Have blacklist end when user prematurely ends it
-- [ ] Have blacklist persist through sessions
+- [X] Have blacklist persist through sessions

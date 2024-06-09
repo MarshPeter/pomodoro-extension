@@ -1,13 +1,17 @@
 const startPomodoroButton = document.querySelector(".pomo-start-btn");
+const blockListAddButton = document.querySelector("#blockListAdd");
 
 let pomodoroState = {
     timerActive: false,
     currentTimer: null,
+    blockList: [],
 }
 
-currentTimer = startPomodoroButton.addEventListener('mousedown', () => {startPomodoro(pomodoroState)});
+startPomodoroButton.addEventListener('mousedown', () => {startPomodoro(pomodoroState)});
+blockListAddButton.addEventListener('mousedown', () => {addToBlockList(pomodoroState)});
+
 document.addEventListener('DOMContentLoaded', () => {
-    chrome.runtime.sendMessage({action: 'retrieveValue'}, (response) => {
+    chrome.runtime.sendMessage({action: 'retrieveState'}, (response) => {
         // 0 is falsey 
         console.log("hello");
         if (response.value) {
@@ -15,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pomodoroState.timerActive = true;
             pomodoroState.currentTimer = setInterval(() => {handleTime(new Date(response.value), pomodoroState);}, 1000);
         }
+        pomodoroState.blockList = response.blockList;
+        generateUrlList(pomodoroState);
     })
 })
 
@@ -52,6 +58,7 @@ function handleTime(finishTime, pomodoroState) {
 function startPomodoro(pomodoroState) {
     if (pomodoroState.timerActive) {
         clearInterval(pomodoroState.currentTimer);
+        chrome.runtime.sendMessage({action: 'stopInterval'})
     }
     const minutesSelected = document.querySelector("#pom_duration_min")
     const timeAllotted = minutesSelected.value ? minutesSelected.value : 25;
@@ -63,3 +70,53 @@ function startPomodoro(pomodoroState) {
     chrome.runtime.sendMessage({action: 'startInterval', finishTime: finishTime});
 }
 
+function generateUrlList(pomodoroState) {
+
+    const blockListURLContainer = document.querySelector(".url-listing__container");
+
+    while (blockListURLContainer.firstChild) {
+        blockListURLContainer.removeChild(blockListURLContainer.lastChild);
+    }
+
+    for (let url of pomodoroState.blockList) {
+        const listItem = createListingNode(url, pomodoroState);
+        blockListURLContainer.appendChild(listItem);
+    }
+}
+
+function createListingNode(url, pomodoroState) {
+    const li = document.createElement('li');
+    const p = document.createElement('p');
+    const btn = document.createElement('button');
+    li.classList.add("url-listing");
+    p.classList.add("url-listing-p");
+    p.textContent = url;
+    btn.type = "button";
+    btn.classList.add("delete-btn");
+    btn.textContent = "X";
+
+    btn.addEventListener('mousedown', () => {
+        chrome.runtime.sendMessage({action: 'removeFromBlockList', website: url});
+        pomodoroState.blockList = pomodoroState.blockList.filter(url);
+    });
+
+    li.appendChild(p);
+    li.appendChild(btn);
+
+    return li;
+}
+
+function addToBlockList(pomodoroState) {
+    const input = document.querySelector('#newBlocklistURLInput');
+    if (input.value === "") {
+        return;
+    }
+
+    if (!pomodoroState.blockList.includes(input.value)) {
+        chrome.runtime.sendMessage({action: 'addToBlockList', website: input.value});
+        pomodoroState.blockList.push(input.value);
+        generateUrlList(pomodoroState);
+    }
+
+    input.value = "";
+}
